@@ -15,64 +15,64 @@ import {
 // import { useState } from "react";
 
 function App() {
-  const [mode ,setMode]=useState('light');
+  const [mode, setMode] = useState('light');
   // const [greyMode ,setGreyMode]=useState('light');
-  const [alert ,setAlert]=useState(null);
-  var showAlert=(message,type)=>{
+  const [alert, setAlert] = useState(null);
+  var showAlert = (message, type) => {
     setAlert({
-      msg:message,
-      type:type
+      msg: message,
+      type: type
     })
-    setTimeout(()=>{
-        setAlert(null)
-    },1500)
+    setTimeout(() => {
+      setAlert(null)
+    }, 1500)
   }
-  var toggleMode=()=>{
-    if(mode==='light'){
+  var toggleMode = () => {
+    if (mode === 'light') {
       setMode('dark')
-      document.body.style.backgroundColor='#042742';
-      showAlert("dark mode has been enabled","success")
-      document.title='TextUtils dark-mode'
+      document.body.style.backgroundColor = '#042742';
+      showAlert("dark mode has been enabled", "success")
+      document.title = 'TextUtils dark-mode'
       // setInterval(()=>{
       //   document.title="Download now";
 
       // },1000)
     }
-    
-    else{
+
+    else {
       setMode('light');
-      document.body.style.backgroundColor='white';
-      showAlert("light mode has been enabled","success")
-      document.title='TextUtils light-mode'
+      document.body.style.backgroundColor = 'white';
+      showAlert("light mode has been enabled", "success")
+      document.title = 'TextUtils light-mode'
     }
   }
-  var toggleGreyMode=()=>{
-    if(mode==='light'){
+  var toggleGreyMode = () => {
+    if (mode === 'light') {
       setMode('grey')
-      document.body.style.backgroundColor='grey';
-      showAlert("grey mode has been enabled","success")
+      document.body.style.backgroundColor = 'grey';
+      showAlert("grey mode has been enabled", "success")
     }
-    else{
+    else {
       setMode('light');
-      document.body.style.backgroundColor='white';
-      showAlert("light mode has been enabled","success")
+      document.body.style.backgroundColor = 'white';
+      showAlert("light mode has been enabled", "success")
     }
   }
   return (
     <>
-    <Router>
-    <NavBar Title="Text-Utils" About="About Us" mode={mode} toggleMode={toggleMode} toggleGreyMode={toggleGreyMode}/>
-  <Alert alert={alert}/>
-    <div className='container'>
-    <Routes> 
-          <Route exact path="/about" element={ <About />} />
+      <Router>
+        <NavBar Title="Text-Utils" About="About Us" mode={mode} toggleMode={toggleMode} toggleGreyMode={toggleGreyMode} />
+        <Alert alert={alert} />
+        <div className='container'>
+          <Routes>
+            <Route exact path="/about" element={<About />} />
             <Route exact path="/" element={<TextForm heading="Enter the text to analyce below" mode={mode} showAlert={showAlert} />
-             }/>
-    </Routes>
-    </div>
-    </Router>
-    
-    
+            } />
+          </Routes>
+        </div>
+      </Router>
+
+
     </>
   );
 }
